@@ -1,17 +1,5 @@
-# Environnement virtuel
-venv/
-.venv/
-
-# Cache Python
-__pycache__/
-*.py[cod]
-
-# Variables d'environnement
 .env
+__pycache__/
+venv/
+*.pyc
 
-# IDE
-.vscode/
-.idea/
-
-# Logs
-*.log
