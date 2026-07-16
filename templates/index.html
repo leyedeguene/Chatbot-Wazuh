@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chatbot SOC · Wazuh</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <div>
+          <h1>Wazuh Chatbot</h1>
+          <p>Connecté à Wazuh · Manager, Indexer &amp; agents</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="chat" id="chat"></main>
+
+    <section class="suggestions" id="suggestions">
+      <button data-q="Le manager Wazuh est-il opérationnel ?">État du manager</button>
+      <button data-q="Liste les agents actifs">Agents actifs</button>
+      <button data-q="Résume les attaques MITRE détectées cette semaine">Résumé MITRE</button>
+      <button data-q="Affiche les 5 événements les plus critiques des dernières 24 heures">Top 5 événements</button>
+    </section>
+
+    <form class="composer" id="composer">
+      <input
+        type="text"
+        id="message"
+        autocomplete="off"
+        placeholder="Pose une question sur ton environnement Wazuh…"
+      />
+      <button type="submit" id="send">Envoyer</button>
+    </form>
+  </div>
+
+  <script src="{{ url_for('static', filename='chat.js') }}"></script>
+</body>
+</html>
