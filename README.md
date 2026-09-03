@@ -75,15 +75,3 @@ Si ces deux commandes échouent, corrige d'abord la configuration réseau/identi
 avant de lancer `app.py` — le chatbot renverra sinon des erreurs d'authentification
 lisibles dans les réponses ("Erreur agent : ...").
 
-
-## Limites connues / pistes d'amélioration
-
-- **Historique en mémoire** : la conversation est perdue au redémarrage du serveur.
-  Pour une démo prolongée ou plusieurs utilisateurs, migrer vers Redis.
-- **Un seul utilisateur Wazuh** : pas de gestion multi-tenant ni de restriction par
-  rôle analyste.
-- **Vulnérabilités** : interrogées sur `wazuh-states-vulnerabilities-*` (Wazuh ≥ 4.8).
-  Sur une version antérieure, adapter `wazuh_indexer.vulnerabilities()` pour utiliser
-  l'ancien endpoint `/vulnerability/{agent_id}` de l'API Manager.
-- **Streaming** : les réponses arrivent d'un bloc ; un mode SSE/streaming améliorerait
-  le ressenti sur les requêtes multi-outils (ex : MITRE + top events combinés).
