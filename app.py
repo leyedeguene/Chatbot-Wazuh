@@ -34,8 +34,7 @@ wazuh_indexer = WazuhIndexer(
 )
 agent = WazuhChatAgent(wazuh_client, wazuh_indexer)
 
-# Historique de conversation en mémoire, par session (suffisant pour un TP / démo).
-# Pour de la production : remplacer par Redis ou une base de données.
+# Historique de conversation en mémoire par session.
 conversations = {}
 
 
@@ -62,7 +61,7 @@ def chat():
         logger.exception("Erreur lors de l'appel à l'agent")
         return jsonify({"error": f"Erreur agent : {e}"}), 500
 
-    # On ne garde en mémoire que les tours user/assistant (pas les tool calls)
+    # On ne garde en mémoire que les tools user/assistant
     # pour garder un contexte léger d'une conversation à l'autre.
     simplified = [m for m in full_messages if m.get("role") in ("user", "assistant") and m.get("content")]
     conversations[session_id] = simplified[-20:]
